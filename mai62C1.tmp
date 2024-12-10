@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq1hkfnjvpv5o"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_u8nlb"]
+[ext_resource type="PackedScene" uid="uid://bnvgfvvpsk2m2" path="res://ball.tscn" id="2_byecd"]
+[ext_resource type="Script" path="res://ball_spawner.gd" id="3_31ywv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txqu6"]
+size = Vector2(20, 118)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a2wed"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(64, 304)
+slide_on_ceiling = false
+script = ExtResource("1_u8nlb")
+
+[node name="Line2D" type="Line2D" parent="Player"]
+points = PackedVector2Array(0, -40, 0, 80)
+width = 22.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_txqu6")
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="BoundaryUp" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryUp"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_a2wed")
+
+[node name="BoundaryDown" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 648)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryDown"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_a2wed")
+
+[node name="BallSpawner" type="Marker2D" parent="."]
+position = Vector2(564, 328)
+script = ExtResource("3_31ywv")
+ball_scene = ExtResource("2_byecd")
