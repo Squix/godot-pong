@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq1hkfnjvpv5o"]
+[gd_scene load_steps=8 format=3 uid="uid://dq1hkfnjvpv5o"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_u8nlb"]
 [ext_resource type="PackedScene" uid="uid://bnvgfvvpsk2m2" path="res://ball.tscn" id="2_byecd"]
+[ext_resource type="Script" path="res://opponent.gd" id="2_d7hsm"]
 [ext_resource type="PhysicsMaterial" uid="uid://d0ena0xvo3spr" path="res://bounce_material.tres" id="2_pax5g"]
 [ext_resource type="Script" path="res://ball_spawner.gd" id="3_31ywv"]
 
@@ -28,7 +29,7 @@ shape = SubResource("RectangleShape2D_txqu6")
 [node name="Opponent" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(1088, 304)
 slide_on_ceiling = false
-script = ExtResource("1_u8nlb")
+script = ExtResource("2_d7hsm")
 
 [node name="Line2D" type="Line2D" parent="Opponent"]
 points = PackedVector2Array(0, -40, 0, 80)
@@ -37,6 +38,14 @@ width = 22.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Opponent"]
 position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_txqu6")
+
+[node name="RaycastUp" type="RayCast2D" parent="Opponent"]
+position = Vector2(0, -39)
+target_position = Vector2(0, -40)
+
+[node name="RaycastDown" type="RayCast2D" parent="Opponent"]
+position = Vector2(0, 80)
+target_position = Vector2(0, 40)
 
 [node name="Boundaries" type="Node2D" parent="."]
 

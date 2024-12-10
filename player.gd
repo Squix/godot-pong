@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var move_speed : float = 300.0
-@export var bounce_strength : float = 500.0
 @onready var x_pos = global_position.x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
