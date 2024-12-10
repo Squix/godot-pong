@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
-@export var bounce_strength = 2.0
+@export var speed: float = 300.0
 
-# custom physics to simplify the bounce effect (no torque)
-#func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	#for i in range(state.get_contact_count()):
-		#var collision_normal = state.get_contact_local_normal(i)
-		#var relative_velocity = state.get_contact_local_velocity_at_position(i) - state.get_linear_velocity()
-		#var normal_velocity = relative_velocity.dot(collision_normal)
-		#
-		#if normal_velocity < 0:
-			#var bounce_velocity = -bounce_strength * normal_velocity * collision_normal
-			#state.set_linear_velocity(state.get_linear_velocity() + bounce_velocity)
+func _ready():
+	# Initialize the ball's velocity in a random direction
+	var direction = Vector2.RIGHT.rotated(randf_range(-PI / 4, PI / 4))
+	velocity = direction.normalized() * speed
+
+# custom physics to bounce on impact
+func _physics_process(delta):
+	# Move the ball and handle collisions
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		# Reflect the velocity based on the collision normal
+		velocity = velocity.bounce(collision.get_normal())
