@@ -26,7 +26,7 @@ position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_txqu6")
 
 [node name="Opponent" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(1089, 304)
+position = Vector2(1088, 304)
 slide_on_ceiling = false
 script = ExtResource("1_u8nlb")
 
