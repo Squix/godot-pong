@@ -92,4 +92,5 @@ position = Vector2(1179, 329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGoal"]
 shape = SubResource("WorldBoundaryShape2D_kalru")
 
+[connection signal="body_entered" from="PlayerGoal" to="GameManager" method="_on_player_goal_body_entered"]
 [connection signal="body_entered" from="OpponentGoal" to="GameManager" method="_on_opponent_goal_body_entered"]

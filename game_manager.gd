@@ -22,3 +22,6 @@ func add_point(target: String):
 
 func _on_opponent_goal_body_entered(body: Node2D) -> void:
 	add_point("player")
+
+func _on_player_goal_body_entered(body: Node2D) -> void:
+	add_point("opponent")
