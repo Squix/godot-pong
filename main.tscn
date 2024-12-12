@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq1hkfnjvpv5o"]
+[gd_scene load_steps=10 format=3 uid="uid://dq1hkfnjvpv5o"]
 
+[ext_resource type="Script" path="res://game_manager.gd" id="1_dx3m0"]
 [ext_resource type="Script" path="res://player.gd" id="1_u8nlb"]
 [ext_resource type="PackedScene" uid="uid://bnvgfvvpsk2m2" path="res://ball.tscn" id="2_byecd"]
 [ext_resource type="Script" path="res://opponent.gd" id="2_d7hsm"]
@@ -11,7 +12,14 @@ size = Vector2(20, 118)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a2wed"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kalru"]
+normal = Vector2(-1, 0)
+
 [node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_dx3m0")
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(64, 304)
@@ -70,3 +78,18 @@ position = Vector2(564, 328)
 script = ExtResource("3_31ywv")
 ball_scene = ExtResource("2_byecd")
 launch_speed = 1000.0
+
+[node name="PlayerGoal" type="Area2D" parent="."]
+position = Vector2(-25, 329)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGoal"]
+shape = SubResource("WorldBoundaryShape2D_kalru")
+
+[node name="OpponentGoal" type="Area2D" parent="."]
+position = Vector2(1179, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGoal"]
+shape = SubResource("WorldBoundaryShape2D_kalru")
+
+[connection signal="body_entered" from="OpponentGoal" to="GameManager" method="_on_opponent_goal_body_entered"]
