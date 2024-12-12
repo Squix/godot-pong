@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://dq1hkfnjvpv5o"]
 
-[ext_resource type="Script" path="res://game_manager.gd" id="1_dx3m0"]
-[ext_resource type="Script" path="res://player.gd" id="1_u8nlb"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_dx3m0"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_u8nlb"]
 [ext_resource type="PackedScene" uid="uid://bnvgfvvpsk2m2" path="res://ball.tscn" id="2_byecd"]
-[ext_resource type="FontFile" uid="uid://3sngd4ma6okj" path="res://bit5x3.ttf" id="2_c0rli"]
-[ext_resource type="Script" path="res://opponent.gd" id="2_d7hsm"]
+[ext_resource type="FontFile" uid="uid://3sngd4ma6okj" path="res://assets/bit5x3.ttf" id="2_c0rli"]
+[ext_resource type="Script" path="res://scripts/opponent.gd" id="2_d7hsm"]
 [ext_resource type="PhysicsMaterial" uid="uid://d0ena0xvo3spr" path="res://bounce_material.tres" id="2_pax5g"]
-[ext_resource type="Script" path="res://ball_spawner.gd" id="3_31ywv"]
+[ext_resource type="Script" path="res://scripts/ball_spawner.gd" id="3_31ywv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ex3f"]
 font = ExtResource("2_c0rli")
@@ -122,6 +122,10 @@ position = Vector2(1179, 329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGoal"]
 position = Vector2(-5, -323)
 shape = SubResource("SegmentShape2D_t6cwl")
+
+[node name="Net" type="Line2D" parent="."]
+position = Vector2(564, -10)
+points = PackedVector2Array(0, 0, 0, 658)
 
 [connection signal="body_entered" from="PlayerGoal" to="GameManager" method="_on_player_goal_body_entered"]
 [connection signal="body_entered" from="OpponentGoal" to="GameManager" method="_on_opponent_goal_body_entered"]
