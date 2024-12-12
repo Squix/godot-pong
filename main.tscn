@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq1hkfnjvpv5o"]
+[gd_scene load_steps=12 format=3 uid="uid://dq1hkfnjvpv5o"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_dx3m0"]
 [ext_resource type="Script" path="res://player.gd" id="1_u8nlb"]
 [ext_resource type="PackedScene" uid="uid://bnvgfvvpsk2m2" path="res://ball.tscn" id="2_byecd"]
+[ext_resource type="FontFile" uid="uid://3sngd4ma6okj" path="res://bit5x3.ttf" id="2_c0rli"]
 [ext_resource type="Script" path="res://opponent.gd" id="2_d7hsm"]
 [ext_resource type="PhysicsMaterial" uid="uid://d0ena0xvo3spr" path="res://bounce_material.tres" id="2_pax5g"]
 [ext_resource type="Script" path="res://ball_spawner.gd" id="3_31ywv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ex3f"]
+font = ExtResource("2_c0rli")
+font_size = 100
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txqu6"]
 size = Vector2(20, 118)
@@ -20,6 +25,27 @@ normal = Vector2(-1, 0)
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_dx3m0")
+
+[node name="PlayerScoreText" type="Label" parent="GameManager"]
+z_index = 10
+offset_left = 298.0
+offset_top = 63.0
+offset_right = 341.0
+offset_bottom = 168.0
+text = "0"
+label_settings = SubResource("LabelSettings_5ex3f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpponentScoreText" type="Label" parent="GameManager"]
+offset_left = 806.0
+offset_top = 63.0
+offset_right = 849.0
+offset_bottom = 168.0
+text = "0"
+label_settings = SubResource("LabelSettings_5ex3f")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(64, 304)
