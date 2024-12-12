@@ -12,12 +12,8 @@ func launch_ball() -> void:
 	ball.position = global_position
 	var current_scene = get_tree().get_current_scene()
 	if current_scene:
-		#Add ball to scene and apply a constant force toward the left of the screen
+		#Add ball to scene
 		current_scene.call_deferred("add_child", ball)
-		#var direction = Vector2.RIGHT.rotated(randf_range(-PI / 4, PI / 4))
-		#print("direction", direction)
-		#ball.velocity = direction.normalized() * launch_speed
-		#ball.move_and_slide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -5,7 +5,10 @@ extends CharacterBody2D
 
 func _ready():
 	# Initialize the ball's velocity in a random direction
-	var direction = Vector2.RIGHT.rotated(randf_range(-PI / 4, PI / 4))
+	var side = Vector2.RIGHT
+	if randi_range(0,1):
+		side = Vector2.LEFT
+	var direction = side.rotated(randf_range(-PI / 4, PI / 4))
 	velocity = direction.normalized() * speed
 
 # custom physics to bounce on impact

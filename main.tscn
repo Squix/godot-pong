@@ -74,6 +74,7 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_a2wed")
 
 [node name="BallSpawner" type="Marker2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(564, 328)
 script = ExtResource("3_31ywv")
 ball_scene = ExtResource("2_byecd")
