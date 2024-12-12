@@ -17,8 +17,9 @@ size = Vector2(20, 118)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a2wed"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kalru"]
-normal = Vector2(-1, 0)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t6cwl"]
+a = Vector2(0, 643)
+b = Vector2(3.8147e-06, -1)
 
 [node name="Main" type="Node2D"]
 
@@ -38,6 +39,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OpponentScoreText" type="Label" parent="GameManager"]
+z_index = 10
 offset_left = 806.0
 offset_top = 63.0
 offset_right = 849.0
@@ -111,13 +113,15 @@ position = Vector2(-25, 329)
 rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGoal"]
-shape = SubResource("WorldBoundaryShape2D_kalru")
+position = Vector2(-4.9992, -316)
+shape = SubResource("SegmentShape2D_t6cwl")
 
 [node name="OpponentGoal" type="Area2D" parent="."]
 position = Vector2(1179, 329)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpponentGoal"]
-shape = SubResource("WorldBoundaryShape2D_kalru")
+position = Vector2(-5, -323)
+shape = SubResource("SegmentShape2D_t6cwl")
 
 [connection signal="body_entered" from="PlayerGoal" to="GameManager" method="_on_player_goal_body_entered"]
 [connection signal="body_entered" from="OpponentGoal" to="GameManager" method="_on_opponent_goal_body_entered"]

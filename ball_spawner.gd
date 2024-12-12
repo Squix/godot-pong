@@ -14,7 +14,3 @@ func launch_ball() -> void:
 	if current_scene:
 		#Add ball to scene
 		current_scene.call_deferred("add_child", ball)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 300.0
+@export var move_speed : float = 600.0
 @onready var x_pos = global_position.x
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	velocity.y = 0  # Reset vertical velocity each frame to have constant speed
 	global_position.x = x_pos # Reset x_pos each frame to prevent the ball to move the paddle
