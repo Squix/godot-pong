@@ -107,7 +107,7 @@ unique_name_in_owner = true
 position = Vector2(564, 328)
 script = ExtResource("3_31ywv")
 ball_scene = ExtResource("2_byecd")
-launch_speed = 1000.0
+launch_speed = 500.0
 
 [node name="PlayerGoal" type="Area2D" parent="."]
 position = Vector2(-25, 329)
