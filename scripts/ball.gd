@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 @export var speed: float = 300.0
-@export var max_speed : float = 800.0
+@export var max_speed : float = 400.0
 @export var player_bounce_speed_multiplier = 1.25 # apply this multiplier to the speed of the ball when bouncing on player
 
 func _ready():
 	# Initialize the ball's velocity in a random direction
-	var side = Vector2.RIGHT
-	if randi_range(0,1):
-		side = Vector2.LEFT
+	var side = Vector2.LEFT
+	#if randi_range(0,1):
+		#side = Vector2.RIGHT
 	var direction = side.rotated(randf_range(-PI / 4, PI / 4))
 	velocity = direction.normalized() * speed
 
@@ -23,3 +23,4 @@ func _physics_process(delta):
 			
 		# Reflect the velocity based on the collision normal
 		velocity = velocity.bounce(collision.get_normal()) * bounce_speed_multiplier
+		speed = abs(velocity.y)

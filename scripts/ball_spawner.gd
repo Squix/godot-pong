@@ -10,6 +10,7 @@ func _ready() -> void:
 func launch_ball() -> void:
 	var ball : CharacterBody2D = ball_scene.instantiate()
 	ball.position = global_position
+	ball.name = "Ball"
 	var current_scene = get_tree().get_current_scene()
 	if current_scene:
 		#Add ball to scene

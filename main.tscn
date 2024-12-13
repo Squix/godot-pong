@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq1hkfnjvpv5o"]
+[gd_scene load_steps=14 format=3 uid="uid://dq1hkfnjvpv5o"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_dx3m0"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_u8nlb"]
@@ -21,6 +21,10 @@ size = Vector2(20, 118)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_t6cwl"]
 a = Vector2(0, 643)
 b = Vector2(3.8147e-06, -1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xpwmb"]
+font = ExtResource("2_c0rli")
+font_size = 32
 
 [node name="Main" type="Node2D"]
 
@@ -53,6 +57,9 @@ vertical_alignment = 1
 [node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(64, 304)
 slide_on_ceiling = false
+floor_constant_speed = true
+floor_max_angle = 3.14159
+platform_on_leave = 2
 script = ExtResource("1_u8nlb")
 
 [node name="Line2D" type="Line2D" parent="Player"]
@@ -66,6 +73,9 @@ shape = SubResource("RectangleShape2D_txqu6")
 [node name="Opponent" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(1088, 304)
 slide_on_ceiling = false
+floor_constant_speed = true
+floor_max_angle = 3.14159
+platform_on_leave = 2
 script = ExtResource("2_d7hsm")
 
 [node name="Line2D" type="Line2D" parent="Opponent"]
@@ -132,6 +142,18 @@ points = PackedVector2Array(0, 0, 0, 658)
 width = 8.0
 texture = ExtResource("8_l2ged")
 texture_mode = 1
+
+[node name="OpponentAImodeDebugLabel" type="Label" parent="."]
+offset_left = 600.0
+offset_top = 15.0
+offset_right = 664.0
+offset_bottom = 39.0
+text = "IDLE"
+label_settings = SubResource("LabelSettings_xpwmb")
+horizontal_alignment = 2
+
+[node name="OpponentAIActiveBehaviorTrigger" type="Marker2D" parent="."]
+position = Vector2(600, 324)
 
 [connection signal="body_entered" from="PlayerGoal" to="GameManager" method="_on_player_goal_body_entered"]
 [connection signal="body_entered" from="OpponentGoal" to="GameManager" method="_on_opponent_goal_body_entered"]
